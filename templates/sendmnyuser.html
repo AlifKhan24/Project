@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://i.postimg.cc/VvfSv5Zw/send-money-button-3198511.webp') no-repeat center center fixed;
+      background: url('your-background.jpg') no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -57,8 +57,19 @@
       border-radius: 4px;
     }
 
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
     .button-group {
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .button-group button {
@@ -101,7 +112,7 @@
 
   <!-- Main Form -->
   <div class="form-container">
-    <h2>Send Money to User</h2>
+    <h2>Send Money</h2>
 
     <div class="form-group">
       <label for="phone">Phone Number</label>
@@ -109,8 +120,18 @@
     </div>
 
     <div class="form-group">
+      <label for="receiverName">Receiver’s Name</label>
+      <input type="text" id="receiverName" placeholder="Enter Receiver's Name" />
+    </div>
+
+    <div class="form-group">
       <label for="amount">Amount</label>
       <input type="number" id="amount" placeholder="Enter Amount" />
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="saveInfo">
+      <label for="saveInfo">Save Account No. and Name For Future Transactions.</label>
     </div>
 
     <div class="button-group">
@@ -133,15 +154,17 @@
 
     function proceedTransaction() {
       const phone = document.getElementById('phone').value.trim();
+      const name = document.getElementById('receiverName').value.trim();
       const amount = document.getElementById('amount').value.trim();
+      const saveInfo = document.getElementById('saveInfo').checked;
 
-      if (phone === '' || amount === '') {
+      if (phone === '' || name === '' || amount === '') {
         alert('Please fill in all fields.');
         return;
       }
 
-      alert(`Sending $${amount} to ${phone}.`);
-      // Add your transaction logic here
+      alert(`Sending $${amount} to ${name} (${phone})\nSave Info: ${saveInfo ? 'Yes' : 'No'}`);
+      // You can add logic here to store the info or make an API call
     }
   </script>
 

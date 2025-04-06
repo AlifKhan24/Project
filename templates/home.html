@@ -1,219 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Banking Home</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        * body {
-            background-image: url('uhui.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #f5f5f5; 
-            color: #fff;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-        } 
-        
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Banking Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #0f2749;
-        }
-        
-        .logo-btn {
-            width: 120px;
-            height: 40px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            /* Add your logo as background image */
-            background-image: url('https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        
-        .main-content {
-            padding: 20px;
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            min-height: calc(100vh - 100px);
-        }
-        
-        .button-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            margin-top: 10px;
-            flex-grow: 1;
-        }
-        
-        .menu-button {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            border: none;
-            border-radius: 10px;
-            padding: 20px 15px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 120px;
-            position: relative;
-            overflow: hidden;
-        }
+    body {
+      background-image: url('uhui.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-color: #f5f5f5;
+      color: #fff;
+      min-height: 100vh;
+    }
 
-        .menu-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--bg-image);
-            background-size: contain;  /* Changed from 'cover' to 'contain' */
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.2;
-            z-index: 0;
-            margin: 10px;  /* Added margin to prevent image touching edges */
-        }   
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #0f2749;
+    }
 
-        .menu-button span {
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Added for better text visibility */
-        }
-        
-        .menu-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .back-button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: auto;
-            padding-bottom: 20px;
-        }
-        
-        .back-button {
-            background-color: #ff4444;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
-        }
-        
-        .back-button:hover {
-            background-color: #cc0000;
-        }
-    </style>
+    .logo-btn {
+      width: 120px;
+      height: 40px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      background-image: url('https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-right button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #aac5ea;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .main-content {
+      padding: 20px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 100px);
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      margin-top: 10px;
+      flex-grow: 1;
+    }
+
+    .menu-button {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      padding: 20px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--bg-image);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      z-index: 0;
+      margin: 10px;
+    }
+
+    .menu-button span {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+
+    .menu-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+
+    .faq-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background-color: #aac5ea;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <button class="logo-btn" id="logoBtn"></button>
-    </nav>
-    
-    <div class="main-content">
-        <div class="button-grid">
-            <button class="menu-button" id="sendMoneyBtn" style="--bg-image: url('https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png')">
-                <span>Send Money</span>
-            </button>
-            <button class="menu-button" id="addMoneyBtn" style="--bg-image: url('https://i.postimg.cc/sgP1rQRY/add-money-button-no-dollar.png')">
-                <span>Add Money</span>
-            </button>
-            <button class="menu-button" id="payBillsBtn" style="--bg-image: url('your-button-bg3.jpg')">
-                <span>Pay Bills</span>
-            </button>
-            <button class="menu-button" id="investmentsBtn" style="--bg-image: url('your-button-bg4.jpg')">
-                <span>Investments</span>
-            </button>
-            <button class="menu-button" id="donationsBtn" style="--bg-image: url('your-button-bg5.jpg')">
-                <span>Donations</span>
-            </button>
-            <button class="menu-button" id="setLimitsBtn" style="--bg-image: url('your-button-bg6.jpg')">
-                <span>Set Transaction Limits</span>
-            </button>
-        </div>
-        
-        <div class="back-button-container">
-            <button class="back-button" id="backBtn">Back</button>
-        </div>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Logo button functionality
-            const logoBtn = document.getElementById('logoBtn');
-            logoBtn.addEventListener('click', function() {
-                alert('Logo button clicked - you can add navigation here');
-            });
-            
-            // Menu buttons functionality
-            const sendMoneyBtn = document.getElementById('sendMoneyBtn');
-            const addMoneyBtn = document.getElementById('addMoneyBtn');
-            const payBillsBtn = document.getElementById('payBillsBtn');
-            const investmentsBtn = document.getElementById('investmentsBtn');
-            const donationsBtn = document.getElementById('donationsBtn');
-            const setLimitsBtn = document.getElementById('setLimitsBtn');
-            
-            sendMoneyBtn.addEventListener('click', function() {
-                alert('Send Money feature will be implemented here');
-            });
-            
-            addMoneyBtn.addEventListener('click', function() {
-                alert('Add Money feature will be implemented here');
-            });
-            
-            payBillsBtn.addEventListener('click', function() {
-                alert('Pay Bills feature will be implemented here');
-            });
-            
-            investmentsBtn.addEventListener('click', function() {
-                alert('Investments feature will be implemented here');
-            });
-            
-            donationsBtn.addEventListener('click', function() {
-                alert('Donations feature will be implemented here');
-            });
-            
-            setLimitsBtn.addEventListener('click', function() {
-                alert('Set Transaction Limits feature will be implemented here');
-            });
-            
-            // Back button functionality
-            const backBtn = document.getElementById('backBtn');
-            backBtn.addEventListener('click', function() {
-                window.history.back();
-            });
-        });
-    </script>
+  <nav class="navbar">
+    <button class="logo-btn" id="logoBtn"></button>
+    <div class="nav-right">
+      <button id="profileBtn">Profile</button>
+      <button id="favBtn">Favourite Accounts</button>
+      <button id="notificationBtn">Notification</button>
+      <button id="logoutBtn">Log out</button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="button-grid">
+      <button class="menu-button" id="sendMoneyBtn" style="--bg-image: url('send.png')">
+        <span>Send Money</span>
+      </button>
+      <button class="menu-button" id="addMoneyBtn" style="--bg-image: url('add.png')">
+        <span>Add Money</span>
+      </button>
+      <button class="menu-button" id="payBillsBtn" style="--bg-image: url('bills.png')">
+        <span>Pay Bills</span>
+      </button>
+      <button class="menu-button" id="investmentsBtn" style="--bg-image: url('invest.png')">
+        <span>Investments</span>
+      </button>
+      <button class="menu-button" id="donationsBtn" style="--bg-image: url('donate.png')">
+        <span>Donations</span>
+      </button>
+      <button class="menu-button" id="giftCardBtn" style="--bg-image: url('gift.png')">
+        <span>Gift Card</span>
+      </button>
+      <button class="menu-button" id="loanBtn" style="--bg-image: url('loan.png')">
+        <span>Loan</span>
+      </button>
+      <button class="menu-button" id="requestMoneyBtn" style="--bg-image: url('request.png')">
+        <span>Request Money</span>
+      </button>
+    </div>
+  </div>
+
+  <button class="faq-button" id="faqBtn">FAQ</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('logoBtn').onclick = () => alert('Logo clicked - go to home');
+      document.getElementById('profileBtn').onclick = () => alert('Profile');
+      document.getElementById('favBtn').onclick = () => alert('Favourite Accounts');
+      document.getElementById('notificationBtn').onclick = () => alert('Notifications');
+      document.getElementById('logoutBtn').onclick = () => alert('Logging out...');
+
+      document.getElementById('sendMoneyBtn').onclick = () => alert('Send Money');
+      document.getElementById('addMoneyBtn').onclick = () => alert('Add Money');
+      document.getElementById('payBillsBtn').onclick = () => alert('Pay Bills');
+      document.getElementById('investmentsBtn').onclick = () => alert('Investments');
+      document.getElementById('donationsBtn').onclick = () => alert('Donations');
+      document.getElementById('giftCardBtn').onclick = () => alert('Gift Card');
+      document.getElementById('loanBtn').onclick = () => alert('Loan');
+      document.getElementById('requestMoneyBtn').onclick = () => alert('Request Money');
+
+      document.getElementById('faqBtn').onclick = () => alert('FAQ clicked');
+    });
+  </script>
 </body>
 </html>

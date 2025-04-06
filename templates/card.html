@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Money - Mobile Banking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            /* Added background image code */
+            background-image: url('https://i.postimg.cc/HLHcc0tv/add-money-to-bank-illustration-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            /* padding-left: 20px; Added left margin for entire content */
+        }
+        /* Added overlay for better readability */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+        
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #0f2749;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            color: #aac5ea;
+        }
+
+        .nav-links .btn {
+            background-color: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .logo-btn {
+            width: 120px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            /* Add your logo as background image */
+            background-image: url('https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .input-section {
+            margin-left: 20px; /* Added left margin for input section */
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .input-field {
+            width: 50%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-left: 20px; /* Added left margin for input fields */
+        }
+        
+        
+        .proceed-btn {
+            width: 50%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: 20px; /* Added left margin for proceed button */
+        }
+        
+        /* Added back button style */
+        .back-btn {
+            width: 50%;
+            padding: 15px;
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 20px; /* Added left margin for back button */
+        }
+        
+        .terms {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <button class="logo-btn" id="logoBtn"></button>
+    </nav>
+    <!-- Logo placeholder - you'll add your logo image here later -->
+    <div class="logo"></div>
+    
+    <h1 class="page-title">Add Money</h1>
+    
+    <p class="description">Add money in easy secure steps. Fast and easy way to add money to your account securely.</p>
+    
+    <div class="input-section">
+        <div class="input-group">
+            <label class="input-label">Card No</label>
+            <input type="text" class="input-field" placeholder="Enter card number">
+        </div>
+        
+        <div class="input-group">
+            <label class="input-label">Enter Amount</label>
+            <input type="text" class="input-field" placeholder="Enter amount">
+        </div>
+    </div>
+    
+    <button class="proceed-btn">Proceed</button>
+    <!-- Added back button -->
+    <button class="back-btn">Back</button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can add JavaScript functionality here if needed
+            const proceedBtn = document.querySelector('.proceed-btn');
+            
+            proceedBtn.addEventListener('click', function() {
+                // Add your proceed button functionality here
+                alert('Proceeding with the transaction...');
+            });
+            
+            // Added back button functionality
+            const backBtn = document.querySelector('.back-btn');
+            backBtn.addEventListener('click', function() {
+                window.history.back();
+            });
+        });
+    </script>
+</body>
+</html>

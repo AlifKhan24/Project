@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Money Internationally - Mobile Banking</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('your-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    nav {
+      background-color: #0f2749;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .form-container {
+      background-color: #0f2749;
+      color: #aac5ea;
+      width: 300px;
+      margin: 60px auto;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #aac5ea;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #aac5ea;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button-group button:hover {
+      background-color: #ddd;
+    }
+
+    .back-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .back-button button {
+      padding: 8px 20px;
+      background-color: #cc0000;
+      border: none;
+      border-radius: 4px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <img src="https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png" alt="Logo" onclick="goHome()" />
+  </nav>
+
+  <!-- Main Form -->
+  <div class="form-container">
+    <h2>Send Money Internationally</h2>
+
+    <div class="form-group">
+      <label for="account">Account No</label>
+      <input type="text" id="account" placeholder="Enter Account Number" />
+    </div>
+
+    <div class="form-group">
+      <label for="user">User Name</label>
+      <input type="text" id="user" placeholder="Enter User Name" />
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <select id="country">
+        <option value="">Select Country</option>
+        <option>Afghanistan</option>
+        <option>Australia</option>
+        <option>Bangladesh</option>
+        <option>Brazil</option>
+        <option>Canada</option>
+        <option>China</option>
+        <option>France</option>
+        <option>Germany</option>
+        <option>India</option>
+        <option>Japan</option>
+        <option>Malaysia</option>
+        <option>Nepal</option>
+        <option>Pakistan</option>
+        <option>Russia</option>
+        <option>Saudi Arabia</option>
+        <option>Singapore</option>
+        <option>Sri Lanka</option>
+        <option>United Kingdom</option>
+        <option>United States</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="amount-bdt">Amount in BDT</label>
+      <input type="number" id="amount-bdt" placeholder="Enter Amount in BDT" />
+    </div>
+
+    <div class="form-group">
+      <label for="amount-foreign">Amount in Selected Country</label>
+      <input type="number" id="amount-foreign" placeholder="Enter Amount in Selected Currency" />
+    </div>
+
+    <div class="button-group">
+      <button onclick="confirmSend()">Confirm</button>
+    </div>
+
+    <div class="back-button">
+      <button onclick="goBack()">Back</button>
+    </div>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function confirmSend() {
+      const account = document.getElementById('account').value.trim();
+      const user = document.getElementById('user').value.trim();
+      const country = document.getElementById('country').value;
+      const amountBDT = document.getElementById('amount-bdt').value.trim();
+      const amountForeign = document.getElementById('amount-foreign').value.trim();
+
+      if (!account || !user || !country || !amountBDT || !amountForeign) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      alert(`You are sending BDT ${amountBDT} (converted to ${amountForeign}) to ${user} in ${country}.`);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment - Mobile Banking</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f1f1;
+    }
+
+    /* Navigation bar */
+    nav {
+      background-color: #0f2749;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0 10px;
+      color: #0f2749;
+      font-size: 28px;
+    }
+
+    .subheading {
+      text-align: center;
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .options-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .option-box {
+      background-color: white;
+      width: 260px;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .option-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .option-header {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .option-number {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      opacity: 0.2;
+    }
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: white;
+      margin: 20px auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .icon-circle img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .option-text {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    /* Colors for each box */
+    .option1 { background-color: #3eb1ff; color: white; }
+    .option2 { background-color: #60d4c3; color: white; }
+    .option3 { background-color: #f6b14c; color: white; }
+    .option4 { background-color: #ef7dbd; color: white; }
+
+    .option1 .icon-circle { background-color: #3498db; }
+    .option2 .icon-circle { background-color: #2ecc71; }
+    .option3 .icon-circle { background-color: #e67e22; }
+    .option4 .icon-circle { background-color: #e91e63; }
+
+    @media (max-width: 768px) {
+      .options-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <img src="https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png" alt="Logo" onclick="goHome()" />
+  </nav>
+
+  <h1>Investments Options</h1>
+
+  <div class="options-container">
+
+    <div class="option-box option1">
+      <div class="option-number">01</div>
+      <div class="option-header">Option 01</div>
+      <div class="icon-circle">
+        <!-- Add your icon inside -->
+        <img src="" alt="icon1" />
+      </div>
+      <div class="option-text">Your text for Option 1 goes here.</div>
+    </div>
+
+    <div class="option-box option2">
+      <div class="option-number">02</div>
+      <div class="option-header">Option 02</div>
+      <div class="icon-circle">
+        <img src="" alt="icon2" />
+      </div>
+      <div class="option-text">Your text for Option 2 goes here.</div>
+    </div>
+
+    <div class="option-box option3">
+      <div class="option-number">03</div>
+      <div class="option-header">Option 03</div>
+      <div class="icon-circle">
+        <img src="" alt="icon3" />
+      </div>
+      <div class="option-text">Your text for Option 3 goes here.</div>
+    </div>
+
+    <div class="option-box option4">
+      <div class="option-number">04</div>
+      <div class="option-header">Option 04</div>
+      <div class="icon-circle">
+        <img src="" alt="icon4" />
+      </div>
+      <div class="option-text">Your text for Option 4 goes here.</div>
+    </div>
+
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html"; // Replace with your homepage
+    }
+  </script>
+
+</body>
+</html>

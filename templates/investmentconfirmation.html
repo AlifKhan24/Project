@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment - Mobile Banking</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('your-image.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Navigation bar */
+    nav {
+      background-color: #0f2749;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0 10px;
+      color: #0f2749;
+      font-size: 28px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .option-box {
+      background-color: #0f2749;
+      color: #aac5ea;
+      width: 300px;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .option-box .option-number {
+      font-size: 32px;
+      font-weight: bold;
+      opacity: 0.2;
+      color: white;
+    }
+
+    .option-box .option-header {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #aac5ea;
+    }
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: white;
+      margin: 20px auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .icon-circle img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .option-text {
+      font-size: 14px;
+      color: #aac5ea;
+      margin-top: 10px;
+    }
+
+    .input-boxes {
+      flex: 1;
+      min-width: 200px;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-group {
+      background-color: #0f2749;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      color: #aac5ea;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+      color: #aac5ea;
+    }
+
+    .input-group input {
+      width: 95%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .button-group button {
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #aac5ea;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button-group button:hover {
+      background-color: #ddd;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-button button {
+      padding: 10px 20px;
+      background-color: #cc0000;
+      border: none;
+      border-radius: 4px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .input-boxes {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <img src="https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png" alt="Logo" onclick="goHome()" />
+  </nav>
+
+  <h1>Investment Option</h1>
+
+  <div class="container">
+    <!-- Left Side: Option Box -->
+    <div class="option-box">
+      <div class="option-number">01</div>
+      <div class="option-header">Option 01</div>
+      <div class="icon-circle">
+        <img src="" alt="icon" />
+      </div>
+      <div class="option-text">Your text for Option 1 goes here.</div>
+    </div>
+
+    <!-- Right Side: Input Fields -->
+    <div class="input-boxes">
+      <div class="input-group">
+        <label for="invest-amount">Invest Amount</label>
+        <input type="number" id="invest-amount" placeholder="Enter amount" />
+      </div>
+
+      <div class="input-group">
+        <label for="investment-period">Investment Period (Date & Time)</label>
+        <input type="datetime-local" id="investment-period" />
+      </div>
+
+      <div class="button-group">
+        <button onclick="confirmInvestment()">Confirm</button>
+      </div>
+
+      <div class="back-button">
+        <button onclick="goBack()">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html"; // Replace with your homepage
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function confirmInvestment() {
+      alert("Investment confirmed!");
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Banking</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f7f9f9;
+      color: #111;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #0f2749;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #aac5ea;
+    }
+
+    .nav-links .btn {
+      background-color: #000;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+
+    .main-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .text-content {
+      max-width: 700px;
+    }
+
+    .text-content h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .highlight {
+      color: #9c7fcf;
+      font-weight: bold;
+    }
+
+    .features {
+      color: #0f2749;
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
+
+    .free-account-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.25rem;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .circle-logo img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 70%;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .main-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .text-content {
+        margin-bottom: 2rem;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <!-- Clickable logo -->
+      <a href="index.html">
+        <img src="https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png" />
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Admin Login</a>
+      <a href="#">SignUp as Admin</a>
+      <a href="#" class="btn">Login</a>
+      <a href="#" class="btn">Create Account</a>
+    </nav>
+  </header>
+
+  <main class="main-section">
+    <div class="text-content">
+      <h1>
+        "Bank beyond borders. Grow without limits."<br>
+        Smart. Secure. Global Banking for Modern Businesses.
+      </h1>
+      <div class="features">
+        <span>Donations</span> |
+        <span>Payments</span> |
+        <span>Multi-Currency</span>
+      </div>
+      <a href="#">
+    </div>
+    <div class="circle-logo">
+      <img src="https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png" />
+    </div>
+  </main>
+</body>
+</html>

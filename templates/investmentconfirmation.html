@@ -13,7 +13,6 @@
       background-size: cover;
     }
 
-    /* Navigation bar */
     nav {
       background-color: #0f2749;
       padding: 10px 20px;
@@ -44,56 +43,30 @@
       gap: 20px;
     }
 
-    .option-box {
+    .info-box {
       background-color: #0f2749;
       color: #aac5ea;
-      width: 300px;
+      width: 350px;
       padding: 30px 40px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      text-align: center;
     }
 
-    .option-box .option-number {
-      font-size: 32px;
-      font-weight: bold;
-      opacity: 0.2;
-      color: white;
+    .info-box h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #fff;
     }
 
-    .option-box .option-header {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #aac5ea;
-    }
-
-    .icon-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background-color: white;
-      margin: 20px auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .icon-circle img {
-      width: 40px;
-      height: 40px;
-    }
-
-    .option-text {
+    .info-box p {
       font-size: 14px;
+      line-height: 1.6;
       color: #aac5ea;
-      margin-top: 10px;
     }
 
     .input-boxes {
       flex: 1;
-      min-width: 200px;
+      min-width: 250px;
       max-width: 500px;
       display: flex;
       flex-direction: column;
@@ -181,14 +154,10 @@
   <h1>Investment Option</h1>
 
   <div class="container">
-    <!-- Left Side: Option Box -->
-    <div class="option-box">
-      <div class="option-number">01</div>
-      <div class="option-header">Option 01</div>
-      <div class="icon-circle">
-        <img src="" alt="icon" />
-      </div>
-      <div class="option-text">Your text for Option 1 goes here.</div>
+    <!-- Left Side: Info Box (content from backend) -->
+    <div class="info-box">
+      <h2>Investment Information</h2>
+      <p id="backend-text">This text will be dynamically populated from the backend using server-side logic.</p>
     </div>
 
     <!-- Right Side: Input Fields -->
@@ -215,15 +184,42 @@
 
   <script>
     function goHome() {
-      window.location.href = "index.html"; // Replace with your homepage
+      window.location.href = "index.html"; // Replace with your homepage URL
     }
 
     function goBack() {
       window.history.back();
     }
 
-    function confirmInvestment() {
-      alert("Investment confirmed!");
+    async function confirmInvestment() {
+      const amount = document.getElementById("invest-amount").value;
+      const dateTime = document.getElementById("investment-period").value;
+
+      if (!amount || !dateTime) {
+        alert("Please fill in both the amount and investment period.");
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/invest", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ amount, dateTime })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          alert(`✅ Investment Successful!\n\nAmount: $${data.amount}\nDate & Time: ${new Date(data.datetime).toLocaleString()}`);
+        } else {
+          alert("❌ Error: " + (data.message || "Investment failed."));
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("❌ Server error. Please try again later.");
+      }
     }
   </script>
 

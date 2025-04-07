@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Complaints</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-image: url('uhui.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-color: #f5f5f5;
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0f2749;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      color: #333;
+    }
+
+    th {
+      background-color: #aac5ea;
+      color: #000;
+      font-size: 16px;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a.user-link {
+      color: #0f2749;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.user-link:hover {
+      text-decoration: underline;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #aac5ea;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .back-button:hover {
+      background-color: #91aed2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Complaint List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Issues</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="/user/12345" class="user-link">12345</a></td>
+          <td>Transaction failed but amount debited</td>
+        </tr>
+        <tr>
+          <td><a href="/user/67890" class="user-link">67890</a></td>
+          <td>Account locked after password attempt</td>
+        </tr>
+        <tr>
+          <td><a href="/user/24680" class="user-link">24680</a></td>
+          <td>Unable to access transaction history</td>
+        </tr>
+        <tr>
+          <td><a href="/user/13579" class="user-link">13579</a></td>
+          <td>Loan approval stuck in processing</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <button class="back-button" id="backBtn">Back</button>
+  </div>
+
+  <script>
+    document.getElementById('backBtn').onclick = () => {
+      window.history.back(); // or use window.location.href = '/admin_home';
+    };
+  </script>
+</body>
+</html>

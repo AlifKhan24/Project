@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Reports</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-image: url('uhui.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: #333;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0f2749;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #aac5ea;
+      color: #000;
+    }
+
+    select, input[type="text"] {
+      padding: 6px;
+      border-radius: 5px;
+      border: 1px solid #999;
+      width: 100%;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .action-button {
+      padding: 10px 20px;
+      background-color: #aac5ea;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.2s;
+    }
+
+    .action-button:hover {
+      background-color: #91aed2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Admin Reports</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>User ID</th>
+          <th>Report Type</th>
+          <th>Action</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody id="reportTableBody">
+        <!-- Example static row -->
+        <tr>
+          <td>2025-04-08 10:23 AM</td>
+          <td>12345</td>
+          <td>Unauthorized access attempt</td>
+          <td>
+            <select>
+              <option>Active</option>
+              <option>Suspend</option>
+            </select>
+          </td>
+          <td><input type="text" placeholder="Enter remark" /></td>
+        </tr>
+        <tr>
+          <td>2025-04-08 11:05 AM</td>
+          <td>67890</td>
+          <td>Multiple login failures</td>
+          <td>
+            <select>
+              <option>Active</option>
+              <option>Suspend</option>
+            </select>
+          </td>
+          <td><input type="text" placeholder="Enter remark" /></td>
+        </tr>
+        <!-- Add more rows dynamically if needed -->
+      </tbody>
+    </table>
+
+    <div class="button-group">
+      <button class="action-button" id="proceedBtn">Proceed</button>
+      <button class="action-button" id="backBtn">Back</button>
+    </div>
+  </div>
+
+  <script>
+    // Back button
+    document.getElementById('backBtn').onclick = () => {
+      window.history.back(); // or set: window.location.href = '/admin_home';
+    };
+
+    // Proceed button
+    document.getElementById('proceedBtn').onclick = () => {
+      const rows = document.querySelectorAll('#reportTableBody tr');
+      const results = [];
+
+      rows.forEach(row => {
+        const date = row.cells[0].textContent;
+        const userId = row.cells[1].textContent;
+        const reportType = row.cells[2].textContent;
+        const action = row.cells[3].querySelector('select').value;
+        const remark = row.cells[4].querySelector('input').value;
+
+        results.push({ date, userId, reportType, action, remark });
+      });
+
+      console.log("Submitted Reports:", results);
+
+      // TODO: Send data to backend via fetch()
+      alert("Reports submitted. (Check console for data)");
+    };
+  </script>
+
+</body>
+</html>

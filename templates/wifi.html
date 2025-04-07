@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WiFi Bills - Mobile Banking</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.postimg.cc/1zcDy1X6/top-view-wi-fi-router-with-smartphone-copy-space-23-2148779241.avif') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    nav {
+      background-color: #0f2749;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0f2749;
+      margin-top: 20px;
+      margin-bottom:0px;
+      font-size: 36px;
+    }
+
+    .main-container {
+      display: flex;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .form-container {
+      background-color: #0f2749;
+      color: #aac5ea;
+      width: 400px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #aac5ea;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button-group button:hover {
+      background-color: #ddd;
+    }
+
+    .installment-section {
+      margin-top: 20px;
+    }
+
+    .installment-options, .multiple-options {
+      display: none;
+      position: absolute;
+      top: 30px;
+      right: -300px;
+      width: 250px;
+      background-color: #0f2749;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    .installment-options h4, .multiple-options h4 {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .installment-options label, .multiple-options label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    .slider {
+      width: 100%;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .back-button button {
+      padding: 10px 30px;
+      background-color: #cc0000;
+      border: none;
+      border-radius: 6px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .installment-options, .multiple-options {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="https://i.postimg.cc/nLt7Kfnk/Mobile-Banking-Logo.png" alt="Logo" onclick="goHome()">
+  </nav>
+
+  <h2>WiFi Bills</h2>
+
+  <div class="main-container">
+    <div class="form-container">
+      <div class="form-group">
+        <label for="meter">User Id</label>
+        <input type="text" id="meter" placeholder="Enter User Id">
+      </div>
+      <div class="form-group">
+        <label for="user">User Name</label>
+        <input type="text" id="user" placeholder="Enter User Name">
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" placeholder="Enter Amount">
+      </div>
+      <div class="form-group">
+        <label for="month">Month</label>
+        <select id="month">
+          <option>January</option><option>February</option><option>March</option>
+          <option>April</option><option>May</option><option>June</option>
+          <option>July</option><option>August</option><option>September</option>
+          <option>October</option><option>November</option><option>December</option>
+        </select>
+      </div>
+
+      <div class="installment-section">
+        <label><input type="checkbox" id="installment-checkbox" onchange="toggleInstallment('installment')"> Pay in Installments.</label><br>
+        <label><input type="checkbox" id="multiple-checkbox" onchange="toggleInstallment('multiple')"> Pay in Multiple Sources.</label>
+      </div>
+
+      <div class="installment-options" id="installment-options">
+        <h4>Select Installment Months:</h4>
+        <label><input type="radio" name="installment-months" value="3"> 3 Months</label>
+        <label><input type="radio" name="installment-months" value="6"> 6 Months</label>
+        <label><input type="radio" name="installment-months" value="12"> 12 Months</label>
+      </div>
+
+      <div class="multiple-options" id="multiple-options">
+        <h4>Select The Percentage of the Money Sources:</h4>
+        <label>Mobile Banking: <input type="range" class="slider" id="mobile" min="0" max="100" value="34" oninput="adjustSliders('mobile')"> <span id="mobile-val">34%</span></label>
+        <label>Bank Account: <input type="range" class="slider" id="bank" min="0" max="100" value="33" oninput="adjustSliders('bank')"> <span id="bank-val">33%</span></label>
+        <label>Card: <input type="range" class="slider" id="card" min="0" max="100" value="33" oninput="adjustSliders('card')"> <span id="card-val">33%</span></label>
+      </div>
+
+      <div class="button-group">
+        <button onclick="payNow()">Pay now</button>
+      </div>
+
+      <div class="back-button">
+        <button onclick="goBack()">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function toggleInstallment(type) {
+      const installmentCheckbox = document.getElementById('installment-checkbox');
+      const multipleCheckbox = document.getElementById('multiple-checkbox');
+      const installmentOptions = document.getElementById('installment-options');
+      const multipleOptions = document.getElementById('multiple-options');
+
+      if (type === 'installment') {
+        if (installmentCheckbox.checked) {
+          multipleCheckbox.checked = false;
+          installmentOptions.style.display = 'block';
+          multipleOptions.style.display = 'none';
+        } else {
+          installmentOptions.style.display = 'none';
+        }
+      } else {
+        if (multipleCheckbox.checked) {
+          installmentCheckbox.checked = false;
+          installmentOptions.style.display = 'none';
+          multipleOptions.style.display = 'block';
+        } else {
+          multipleOptions.style.display = 'none';
+        }
+      }
+    }
+
+    function payNow() {
+      const installment = document.getElementById('installment-checkbox').checked;
+      const multiple = document.getElementById('multiple-checkbox').checked;
+
+      if (!installment && !multiple) {
+        const conditionFulfilled = Math.random() > 0.3;
+        if (conditionFulfilled) {
+          alert('Bill Paid Successfully.');
+        } else {
+          alert('Error.');
+        }
+      } else {
+        alert('Payment method selected. Proceeding...');
+      }
+    }
+
+    function adjustSliders(changed) {
+      const mobile = document.getElementById('mobile');
+      const bank = document.getElementById('bank');
+      const card = document.getElementById('card');
+
+      let mVal = parseInt(mobile.value);
+      let bVal = parseInt(bank.value);
+      let cVal = parseInt(card.value);
+
+      const total = mVal + bVal + cVal;
+
+      if (total !== 100) {
+        let others = ['mobile', 'bank', 'card'].filter(id => id !== changed);
+        let first = document.getElementById(others[0]);
+        let second = document.getElementById(others[1]);
+
+        let newTotal = 100 - parseInt(document.getElementById(changed).value);
+        let val1 = Math.floor(newTotal / 2);
+        let val2 = newTotal - val1;
+
+        first.value = val1;
+        second.value = val2;
+      }
+
+      document.getElementById('mobile-val').innerText = mobile.value + '%';
+      document.getElementById('bank-val').innerText = bank.value + '%';
+      document.getElementById('card-val').innerText = card.value + '%';
+    }
+  </script>
+</body>
+</html>

@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: url('your-background.jpg') no-repeat center center fixed;
+      background: url('https://i.postimg.cc/C1zXvjMF/int.avif') no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -56,6 +56,15 @@
       padding: 8px;
       border: none;
       border-radius: 4px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .form-group input:read-only,
+    .form-group select:disabled {
+      background-color: #e0e0e0;
+      color: #555;
+      cursor: not-allowed;
     }
 
     .button-group {
@@ -108,48 +117,27 @@
 
     <div class="form-group">
       <label for="account">Account No</label>
-      <input type="text" id="account" placeholder="Enter Account Number" />
+      <input type="text" id="account" readonly />
     </div>
 
     <div class="form-group">
       <label for="user">User Name</label>
-      <input type="text" id="user" placeholder="Enter User Name" />
+      <input type="text" id="user" readonly />
     </div>
 
     <div class="form-group">
       <label for="country">Country</label>
-      <select id="country">
-        <option value="">Select Country</option>
-        <option>Afghanistan</option>
-        <option>Australia</option>
-        <option>Bangladesh</option>
-        <option>Brazil</option>
-        <option>Canada</option>
-        <option>China</option>
-        <option>France</option>
-        <option>Germany</option>
-        <option>India</option>
-        <option>Japan</option>
-        <option>Malaysia</option>
-        <option>Nepal</option>
-        <option>Pakistan</option>
-        <option>Russia</option>
-        <option>Saudi Arabia</option>
-        <option>Singapore</option>
-        <option>Sri Lanka</option>
-        <option>United Kingdom</option>
-        <option>United States</option>
-      </select>
+      <input type="text" id="country" readonly />
     </div>
 
     <div class="form-group">
       <label for="amount-bdt">Amount in BDT</label>
-      <input type="number" id="amount-bdt" placeholder="Enter Amount in BDT" />
+      <input type="number" id="amount-bdt" readonly />
     </div>
 
     <div class="form-group">
       <label for="amount-foreign">Amount in Selected Country</label>
-      <input type="number" id="amount-foreign" placeholder="Enter Amount in Selected Currency" />
+      <input type="number" id="amount-foreign" readonly />
     </div>
 
     <div class="button-group">
@@ -170,17 +158,43 @@
       window.history.back();
     }
 
-    function confirmSend() {
-      const account = document.getElementById('account').value.trim();
-      const user = document.getElementById('user').value.trim();
-      const country = document.getElementById('country').value;
-      const amountBDT = document.getElementById('amount-bdt').value.trim();
-      const amountForeign = document.getElementById('amount-foreign').value.trim();
+    // Simulate retrieving values from the previous page using sessionStorage
+    window.onload = function () {
+      // Dummy fallback values
+      const account = sessionStorage.getItem('account') || '9876543210';
+      const user = sessionStorage.getItem('username') || 'John Doe';
+      const country = sessionStorage.getItem('country') || 'Canada';
+      const amountBDT = sessionStorage.getItem('amountBDT') || '10000';
+      const exchangeRate = getExchangeRate(country);
+      const amountForeign = (parseFloat(amountBDT) * exchangeRate).toFixed(2);
 
-      if (!account || !user || !country || !amountBDT || !amountForeign) {
-        alert("Please fill in all fields.");
-        return;
-      }
+      // Fill inputs
+      document.getElementById('account').value = account;
+      document.getElementById('user').value = user;
+      document.getElementById('country').value = country;
+      document.getElementById('amount-bdt').value = amountBDT;
+      document.getElementById('amount-foreign').value = amountForeign;
+    };
+
+    function getExchangeRate(country) {
+      // Dummy exchange rates
+      const rates = {
+        'Canada': 0.012,
+        'United States': 0.0091,
+        'United Kingdom': 0.0073,
+        'India': 0.76,
+        'Australia': 0.014,
+        'Japan': 1.47,
+        'Germany': 0.0083
+      };
+      return rates[country] || 0.01; // Default rate if country not listed
+    }
+
+    function confirmSend() {
+      const user = document.getElementById('user').value;
+      const amountBDT = document.getElementById('amount-bdt').value;
+      const country = document.getElementById('country').value;
+      const amountForeign = document.getElementById('amount-foreign').value;
 
       alert(`You are sending BDT ${amountBDT} (converted to ${amountForeign}) to ${user} in ${country}.`);
     }
